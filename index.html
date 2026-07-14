@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korkmaz Yapı | İnşaat & Taahhüt Projeleri</title>
+  
+  <!-- Dinamik SVG Favicon (Yüklediğiniz Logodan Türetilmiştir) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none' stroke='%23ae8457' stroke-width='6' stroke-linecap='round'><path d='M 35,22 L 35,70 C 35,78 29,80 21,82 L 31,85 M 45,27 L 45,88 M 55,32 L 55,94 M 55,56 L 85,26 M 65,61 L 95,31 M 75,66 L 105,36 M 55,66 L 85,96 M 65,61 L 95,91 M 75,56 L 105,86'/></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Inter & Syne for luxury/industrial typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#0f0f11',      /* Sophisticated Deep Charcoal */
+              card: '#16161a',      /* Darker grey for cards */
+              accent: '#ae8457',    /* Premium Bronze/Gold from the logo */
+              accentHover: '#8e653c',
+              muted: '#8e8e93',     /* Elegant light grey */
+              light: '#f5f5f7',     /* Clean cream/white for high-contrast sections */
+            }
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 1s ease-out forwards',
+            'fade-in': 'fadeIn 1.2s ease-out forwards',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Premium custom scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0f11;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ae8457;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8e653c;
+    }
+
+    /* Custom overlay gradient for modern aesthetics */
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(15,15,17,0.4) 0%, rgba(15,15,17,0.95) 100%);
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-[#e4e4e7] overflow-x-hidden font-sans">
+
+  <!-- Header / Navigation Bar -->
+  <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-6 lg:px-16 bg-transparent">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- Logo and Brand Name Combo -->
+      <a href="#hero" class="flex items-center space-x-3 group">
+        <!-- Vektörel Kartal K Logosu -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" class="w-10 h-10 lg:w-12 lg:h-12 transition-transform duration-500 group-hover:scale-105" fill="none" stroke="#ae8457" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Sol dikey çizgiler ve kartal başı motifi -->
+          <path d="M 35,22 L 35,70 C 35,78 29,80 21,82 L 31,85" />
+          <path d="M 45,27 L 45,88" />
+          <path d="M 55,32 L 55,94" />
+          <!-- Sağ üst çapraz çizgiler -->
+          <path d="M 55,56 L 85,26" />
+          <path d="M 65,61 L 95,31" />
+          <path d="M 75,66 L 105,36" />
+          <!-- Sağ alt çapraz çizgiler -->
+          <path d="M 55,66 L 85,96" />
+          <path d="M 65,61 L 95,91" />
+          <path d="M 75,56 L 105,86" />
+        </svg>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-lg lg:text-xl tracking-[0.12em] text-white leading-none">KORKMAZ</span>
+          <span class="font-sans text-[10px] tracking-[0.38em] text-brand-accent mt-1 uppercase font-semibold">YAPI</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links (Desktop) -->
+      <nav class="hidden md:flex space-x-8 items-center text-xs tracking-widest font-medium">
+        <a href="#about" class="hover:text-brand-accent transition-colors duration-300">KURUMSAL</a>
+        <a href="#projects" class="hover:text-brand-accent transition-colors duration-300">PROJELERİMİZ</a>
+        <a href="#team" class="hover:text-brand-accent transition-colors duration-300">YÖNETİM EKİBİMİZ</a>
+        <a href="#contact" class="px-5 py-2 bg-transparent border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-dark transition-all duration-300 rounded-sm text-xs font-semibold">TEKLİF İSTEYİN</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-white hover:text-brand-accent focus:outline-none" aria-label="Menüyü Aç">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="fixed inset-0 bg-[#0c0c0e] z-40 transform translate-x-full transition-transform duration-500 flex flex-col justify-center items-center space-y-8 text-xl tracking-widest">
+      <!-- Close Button inside drawer -->
+      <button id="close-drawer-btn" class="absolute top-6 right-6 text-white hover:text-brand-accent focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <a href="#about" class="mobile-nav-link hover:text-brand-accent transition-colors">KURUMSAL</a>
+      <a href="#projects" class="mobile-nav-link hover:text-brand-accent transition-colors">PROJELERİMİZ</a>
+      <a href="#team" class="mobile-nav-link hover:text-brand-accent transition-colors">YÖNETİM EKİBİMİZ</a>
+      <a href="#contact" class="mobile-nav-link px-8 py-3 bg-brand-accent text-brand-dark font-semibold tracking-wider hover:bg-white hover:text-brand-dark transition-colors duration-300 rounded-sm text-sm">TEKLİF ALIN</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <!-- Background Cinematic Image (High Quality Construction Twilight Skeleton Image) -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-[10000ms] ease-out opacity-45" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000');" id="hero-bg"></div>
+    <div class="absolute inset-0 hero-gradient"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-5xl mx-auto text-center px-6 mt-16 animate-fade-in-up">
+      <span class="text-xs lg:text-sm tracking-[0.5em] text-brand-accent font-semibold block mb-4 uppercase">27 YILLIK KÖKLÜ YAPI VE TAAHHÜT TECRÜBESİ</span>
+      <h1 class="font-display font-semibold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight text-white leading-none mb-6">
+        Geleceğin Güçlü <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-accent to-brand-accent">Yapılarını İnşa Ediyoruz.</span>
+      </h1>
+      <p class="text-sm sm:text-base lg:text-lg max-w-2xl mx-auto text-brand-muted font-light leading-relaxed mb-10">
+        Korkmaz Yapı, zemin güçlendirmeden betonarmeye, derin zemin kazılarından anahtar teslim prestij konutlarına kadar tüm inşaat ve taahhüt süreçlerine yüksek mühendislik güvencesiyle imza atmaktadır.
+      </p>
+      
+      <!-- CTA Action -->
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="#projects" class="w-full sm:w-auto px-8 py-4 bg-brand-accent text-brand-dark font-bold text-xs tracking-[0.2em] rounded-sm hover:bg-white hover:text-brand-dark transition-all duration-300 shadow-lg">PROJELERİMİZİ KEŞFEDİN</a>
+        <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white text-white font-bold text-xs tracking-[0.2em] rounded-sm hover:bg-white hover:text-brand-dark transition-all duration-300">TEKLİF İSTEYİN</a>
+      </div>
+    </div>
+
+    <!-- Soft Mouse Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-80">
+      <span class="text-[9px] tracking-[0.4em] text-brand-muted mb-2 uppercase">Kaydırın</span>
+      <div class="w-[1.5px] h-12 bg-gradient-to-b from-brand-accent to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- About / Heritage Section -->
+  <section id="about" class="py-24 lg:py-36 px-6 lg:px-16 bg-[#0f0f11] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+      
+      <!-- Left: Visual Heritage Block -->
+      <div class="lg:col-span-5 relative">
+        <div class="absolute -top-6 -left-6 w-32 h-32 border-t-2 border-l-2 border-brand-accent/20"></div>
+        <div class="relative overflow-hidden group rounded-sm shadow-xl">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800" alt="İnşaat ve Mühendislik Şantiyesi" class="w-full object-cover rounded-sm grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105">
+        </div>
+        <div class="absolute -bottom-8 -right-8 bg-brand-card p-6 border border-brand-accent/10 rounded-sm hidden sm:block shadow-2xl">
+          <p class="font-display font-bold text-4xl text-brand-accent">27+</p>
+          <p class="text-[10px] tracking-widest text-brand-muted uppercase font-medium mt-1">Yıllık İnşaat Güvencesi</p>
+        </div>
+      </div>
+
+      <!-- Right: Info & Stats -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
+        <span class="text-xs tracking-[0.4em] text-brand-accent font-semibold mb-3 uppercase">BİZ KİMİZ? & KURUMSAL GÜCÜMÜZ</span>
+        <h2 class="font-display font-semibold text-3xl lg:text-5xl text-white leading-tight mb-6">Mühendislik Güvencesiyle Geleceği Güçlendiriyoruz.</h2>
+        <p class="text-brand-muted text-sm lg:text-base leading-relaxed mb-8 font-light">
+          Korkmaz Yapı olarak, 1999 yılından bu yana Ankara başta olmak üzere ülkemizin inşaat, taahhüt ve hafriyat ihtiyaçlarına güçlü bir mühendislik vizyonuyla yanıt veriyoruz. Radye jeneral temel teknolojileri, C35/C40 yüksek dayanımlı beton sınıfları ve deprem yönetmeliğine %100 uyumlu kaba yapı tasarımlarımızla sadece binalar değil, sarsılmaz yarınlar inşa ediyoruz. Geniş şantiye deneyimimiz, alanında uzman mühendislik kadromuz ve sıfır hata prensibimizle kentsel projelerden endüstriyel altyapılara kadar her aşamada güven veriyoruz.
+        </p>
+        
+        <!-- Metric Grid -->
+        <div class="grid grid-cols-3 gap-8 pt-8 border-t border-brand-accent/10">
+          <div>
+            <h4 class="font-display font-semibold text-3xl lg:text-4xl text-white">27+</h4>
+            <p class="text-[10px] tracking-widest text-brand-muted uppercase mt-2">Yıllık Tecrübe</p>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-3xl lg:text-4xl text-white">100.000+ m³</h4>
+            <p class="text-[10px] tracking-widest text-brand-muted uppercase mt-2">Dökülen Beton</p>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-3xl lg:text-4xl text-white">7+</h4>
+            <p class="text-[10px] tracking-widest text-brand-muted uppercase mt-2">Tamamlanan Dev Proje</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Portfolio Section -->
+  <section id="projects" class="py-24 lg:py-36 px-6 lg:px-16 bg-black relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Top Title & Interactive Filter Header -->
+      <div class="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 mb-16">
+        <div>
+          <span class="text-xs tracking-[0.4em] text-brand-accent font-semibold mb-3 uppercase block">ÖNE ÇIKAN İNŞAAT PROJELERİMİZ</span>
+          <h2 class="font-display font-semibold text-3xl lg:text-5xl text-white leading-tight">Yükselen Değerlerimiz</h2>
+        </div>
+        
+        <!-- Interactive Project Filter Switcher -->
+        <div class="flex flex-wrap gap-2 text-xs tracking-[0.15em] font-semibold border-b border-white/5 pb-2">
+          <button onclick="filterProjects('all')" id="filter-all" class="px-5 py-2.5 bg-brand-accent text-brand-dark rounded-sm transition-all duration-300 filter-btn">TÜM PROJELER</button>
+          <button onclick="filterProjects('completed')" id="filter-completed" class="px-5 py-2.5 text-brand-muted hover:text-white rounded-sm transition-all duration-300 filter-btn">TAMAMLANANLAR</button>
+          <button onclick="filterProjects('ongoing')" id="filter-ongoing" class="px-5 py-2.5 text-brand-muted hover:text-white rounded-sm transition-all duration-300 filter-btn">DEVAM EDENLER</button>
+        </div>
+      </div>
+
+      <!-- Modern Dynamic Grid of Project Cards -->
+      <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Project Item: Cemre Park Konutları -->
+        <div class="project-card group relative bg-brand-card overflow-hidden rounded-sm border border-white/5 transition-all duration-500 hover:border-brand-accent/40 shadow-xl" data-category="completed">
+          <div class="relative h-[280px] sm:h-[350px] overflow-hidden bg-[#1f1f23]">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" alt="Cemre Park Konutları" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-4 left-4 bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded-sm">TAMAMLANDI (2011)</span>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-14 h-14 bg-brand-accent/80 hover:bg-brand-accent rounded-full flex items-center justify-center text-brand-dark text-xl shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] tracking-widest text-brand-accent uppercase font-medium">PRESTİJLİ SİTE YAŞAMI</span>
+            <h3 class="font-display font-semibold text-lg lg:text-xl text-white mt-1 mb-3">Cemre Park Konutları</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">2011 yılında Ankara'da teslimini gerçekleştirdiğimiz, modern altyapısı ve yeşil peyzajı ile bölgenin öncü konut sitelerindendir.</p>
+            <button onclick="openProjectModal('cemre_park')" class="text-xs tracking-[0.2em] font-bold text-brand-accent group-hover:text-white flex items-center transition-colors">
+              VİDEOLU DETAY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Item: Vestra Doğa Blokları -->
+        <div class="project-card group relative bg-brand-card overflow-hidden rounded-sm border border-white/5 transition-all duration-500 hover:border-brand-accent/40 shadow-xl" data-category="completed">
+          <div class="relative h-[280px] sm:h-[350px] overflow-hidden bg-[#1f1f23]">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800" alt="Vestra Doğa Blokları" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-4 left-4 bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded-sm">TAMAMLANDI (2012)</span>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-14 h-14 bg-brand-accent/80 hover:bg-brand-accent rounded-full flex items-center justify-center text-brand-dark text-xl shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] tracking-widest text-brand-accent uppercase font-medium">DOĞA İLE İÇ İÇE YAŞAM</span>
+            <h3 class="font-display font-semibold text-lg lg:text-xl text-white mt-1 mb-3">Vestra Doğa Blokları</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">2012 yılında doğayla uyumlu mimari çizgi ve sarsılmaz radye temel teknolojisiyle Ankara'da yükselen prestijli bloklarımız.</p>
+            <button onclick="openProjectModal('vestra_doga')" class="text-xs tracking-[0.2em] font-bold text-brand-accent group-hover:text-white flex items-center transition-colors">
+              VİDEOLU DETAY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Item: Haskent Sitesi -->
+        <div class="project-card group relative bg-brand-card overflow-hidden rounded-sm border border-white/5 transition-all duration-500 hover:border-brand-accent/40 shadow-xl" data-category="completed">
+          <div class="relative h-[280px] sm:h-[350px] overflow-hidden bg-[#1f1f23]">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=800" alt="Haskent Sitesi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-4 left-4 bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded-sm">TAMAMLANDI (2014)</span>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-14 h-14 bg-brand-accent/80 hover:bg-brand-accent rounded-full flex items-center justify-center text-brand-dark text-xl shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] tracking-widest text-brand-accent uppercase font-medium">KABA İNŞAAT & TAAHHÜT</span>
+            <h3 class="font-display font-semibold text-lg lg:text-xl text-white mt-1 mb-3">Haskent Sitesi</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">2014 yılında bitirdiğimiz, şık resepsiyonu, C35 beton sınıfı mukavemeti ve modern peyzajıyla Korkmaz Yapı kalitesini yansıtan sitemiz.</p>
+            <button onclick="openProjectModal('haskent')" class="text-xs tracking-[0.2em] font-bold text-brand-accent group-hover:text-white flex items-center transition-colors">
+              VİDEOLU DETAY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Item: Seyir Evleri -->
+        <div class="project-card group relative bg-brand-card overflow-hidden rounded-sm border border-white/5 transition-all duration-500 hover:border-brand-accent/40 shadow-xl" data-category="completed">
+          <div class="relative h-[280px] sm:h-[350px] overflow-hidden bg-[#1f1f23]">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800" alt="Seyir Evleri" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-4 left-4 bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded-sm">TAMAMLANDI (2016)</span>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-14 h-14 bg-brand-accent/80 hover:bg-brand-accent rounded-full flex items-center justify-center text-brand-dark text-xl shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] tracking-widest text-brand-accent uppercase font-medium">MANZARALI AİLE KONAKLARI</span>
+            <h3 class="font-display font-semibold text-lg lg:text-xl text-white mt-1 mb-3">Seyir Evleri</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">2016 yılında tamamlanan, şehre hakim manzarası, geniş oturum planları ve yüksek yapı güvenlik standartlarıyla inşa ettiğimiz konut projesi.</p>
+            <button onclick="openProjectModal('seyir_evleri')" class="text-xs tracking-[0.2em] font-bold text-brand-accent group-hover:text-white flex items-center transition-colors">
+              VİDEOLU DETAY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Item: Mira Konutları -->
+        <div class="project-card group relative bg-brand-card overflow-hidden rounded-sm border border-white/5 transition-all duration-500 hover:border-brand-accent/40 shadow-xl" data-category="completed">
+          <div class="relative h-[280px] sm:h-[350px] overflow-hidden bg-[#1f1f23]">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="Mira Konutları" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-4 left-4 bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded-sm">TAMAMLANDI (2018)</span>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-14 h-14 bg-brand-accent/80 hover:bg-brand-accent rounded-full flex items-center justify-center text-brand-dark text-xl shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] tracking-widest text-brand-accent uppercase font-medium">KONUT TAAHHÜT & İNCE İŞÇİLİK</span>
+            <h3 class="font-display font-semibold text-lg lg:text-xl text-white mt-1 mb-3">Mira Konutları</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">Mühendisliği ve ince yapı işçiliği firmamızca yürütülen, mermer resepsiyonu ve özel dış cephe yalıtımıyla fark yaratan lüks konut projesi.</p>
+            <button onclick="openProjectModal('mirakonut')" class="text-xs tracking-[0.2em] font-bold text-brand-accent group-hover:text-white flex items-center transition-colors">
+              VİDEOLU DETAY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Item: Cadde Tower -->
+        <div class="project-card group relative bg-brand-card overflow-hidden rounded-sm border border-white/5 transition-all duration-500 hover:border-brand-accent/40 shadow-xl" data-category="completed">
+          <div class="relative h-[280px] sm:h-[350px] overflow-hidden bg-[#1f1f23]">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Cadde Tower" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-4 left-4 bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded-sm">TAMAMLANDI (2020)</span>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-14 h-14 bg-brand-accent/80 hover:bg-brand-accent rounded-full flex items-center justify-center text-brand-dark text-xl shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] tracking-widest text-brand-accent uppercase font-medium">TİCARİ + REZİDANS KULE</span>
+            <h3 class="font-display font-semibold text-lg lg:text-xl text-white mt-1 mb-3">Cadde Tower</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">Şehrin merkezinde yükselen, ticari ofisler ve rezidans dairelerden oluşan, modern çelik panel kalıplarla 2020 yılında bitirdiğimiz projemiz.</p>
+            <button onclick="openProjectModal('cadde_tower')" class="text-xs tracking-[0.2em] font-bold text-brand-accent group-hover:text-white flex items-center transition-colors">
+              VİDEOLU DETAY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Project Item: Vestra Aktepe -->
+        <div class="project-card group relative bg-brand-card overflow-hidden rounded-sm border border-white/5 transition-all duration-500 hover:border-brand-accent/40 shadow-xl" data-category="completed">
+          <div class="relative h-[280px] sm:h-[350px] overflow-hidden bg-[#1f1f23]">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800" alt="Vestra Aktepe" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-4 left-4 bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 text-[9px] tracking-widest font-bold px-3 py-1.5 uppercase rounded-sm">TAMAMLANDI (2023)</span>
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-14 h-14 bg-brand-accent/80 hover:bg-brand-accent rounded-full flex items-center justify-center text-brand-dark text-xl shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] tracking-widest text-brand-accent uppercase font-medium">REZİDANS & YAPI MÜHENDİSLİĞİ</span>
+            <h3 class="font-display font-semibold text-lg lg:text-xl text-white mt-1 mb-3">Vestra Aktepe</h3>
+            <p class="text-xs text-brand-muted leading-relaxed mb-6">2023 yılında tamamlanan, eğimli araziye özel zemin güçlendirme yöntemleri ve C40 beton dayanımıyla yükselen modern rezidans projesi.</p>
+            <button onclick="openProjectModal('vestra_aktepe')" class="text-xs tracking-[0.2em] font-bold text-brand-accent group-hover:text-white flex items-center transition-colors">
+              VİDEOLU DETAY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty State Informational Div -->
+      <div id="project-empty-state" class="hidden text-center py-16 bg-brand-card border border-white/5 rounded-sm max-w-xl mx-auto my-8 transition-opacity duration-300">
+        <div class="text-brand-accent text-3xl mb-4"><i class="fa-solid fa-hourglass-half"></i></div>
+        <h3 class="font-display font-semibold text-lg text-white mb-2">Yakında Yeni Projelerimizle Karşınızda Olacağız</h3>
+        <p class="text-xs text-brand-muted max-w-sm mx-auto leading-relaxed">Şu an aktif yapım aşamasında veya satışta olan yeni şantiyemiz bulunmamaktadır. Lansman öncesi bilgilendirme için bizimle iletişime geçebilirsiniz.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Project Detail Modal System -->
+  <div id="project-modal" class="fixed inset-0 bg-black/95 z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="bg-[#101014] w-full max-w-5xl rounded-sm border border-white/10 overflow-y-auto max-h-[90vh] shadow-2xl relative">
+      
+      <!-- Close Button -->
+      <button onclick="closeProjectModal()" class="absolute top-6 right-6 text-white hover:text-brand-accent z-20 focus:outline-none bg-black/60 w-10 h-10 rounded-full flex items-center justify-center border border-white/10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <!-- Dynamic Content Injection Area -->
+      <div id="modal-content" class="p-6 lg:p-12">
+        <!-- Will be filled by Javascript dynamically -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Management Team / Yönetim Ekibimiz Section -->
+  <section id="team" class="py-24 lg:py-36 px-6 lg:px-16 bg-[#0f0f11] relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-20">
+        <span class="text-xs tracking-[0.4em] text-brand-accent font-semibold mb-3 uppercase block">GÜÇLÜ LİDERLİK & ORTAKLIK YAPISI</span>
+        <h2 class="font-display font-semibold text-3xl lg:text-5xl text-white leading-tight">Yönetim Kurulumuz</h2>
+        <div class="w-16 h-[2px] bg-brand-accent mx-auto mt-6"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <!-- Partner 1: Şeref Korkmaz -->
+        <div class="group bg-brand-card border border-white/5 rounded-sm overflow-hidden hover:border-brand-accent/30 transition-all duration-500 shadow-xl">
+          <div class="aspect-[4/3] overflow-hidden relative bg-[#1f1f23]">
+            <img src="seref_korkmaz.jpg" alt="Şeref Korkmaz" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <!-- Bottom Name Tag -->
+            <div class="absolute bottom-6 left-6">
+              <h3 class="font-display font-bold text-2xl text-white tracking-wide leading-tight">Şeref Korkmaz</h3>
+              <p class="text-xs text-brand-accent tracking-widest uppercase font-semibold mt-1">Kurucu / Yönetim Kurulu Başkanı</p>
+            </div>
+          </div>
+          <div class="p-8">
+            <p class="text-sm text-brand-muted leading-relaxed font-light">
+              Korkmaz Yapı'nın kurucusu ve yönetim kurulu başkanı olan Şeref Korkmaz, çeyrek asrı aşan inşaat ve taahhüt tecrübesiyle firmamızın vizyoner liderliğini yürütmektedir. Dürüstlük, kalite ve iş ahlakı ilkeleriyle şirketimizi sektörün öncülerinden biri konumuna getirmiştir.
+            </p>
+          </div>
+        </div>
+
+        <!-- Partner 2: Yusuf Korkmaz -->
+        <div class="group bg-brand-card border border-white/5 rounded-sm overflow-hidden hover:border-brand-accent/30 transition-all duration-500 shadow-xl">
+          <div class="aspect-[4/3] overflow-hidden relative bg-[#1f1f23]">
+            <img src="yusuf_korkmaz.jpg" alt="Yusuf Korkmaz" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-6 left-6">
+              <h3 class="font-display font-bold text-2xl text-white tracking-wide leading-tight">Yusuf Korkmaz</h3>
+              <p class="text-xs text-brand-accent tracking-widest uppercase font-semibold mt-1">Kurucu Ortak / Genel Müdür</p>
+            </div>
+          </div>
+          <div class="p-8">
+            <p class="text-sm text-brand-muted leading-relaxed font-light">
+              Yusuf Korkmaz, inşaat mühendisliği alanındaki güçlü akademik ve teknik altyapısı ile Korkmaz Yapı projelerinin planlama, statik mukavemet ve şantiye yönetim aşamalarını koordine etmektedir. Yenilikçi vizyonuyla akıllı bina ve sürdürülebilirlik entegrasyonuna öncülük etmektedir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Request Quote Section -->
+  <section id="contact" class="py-24 lg:py-36 px-6 lg:px-16 bg-black relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      
+      <!-- Left: Contact Details -->
+      <div class="lg:col-span-5 flex flex-col justify-center">
+        <span class="text-xs tracking-[0.4em] text-brand-accent font-semibold mb-3 uppercase">İLETİŞİM BİLGİLERİ</span>
+        <h2 class="font-display font-semibold text-3xl lg:text-5xl text-white leading-tight mb-8">İnşaat ve Proje Talepleriniz İçin Teklif Alın.</h2>
+        <p class="text-brand-muted text-sm lg:text-base leading-relaxed mb-10 font-light">
+          Ankara ve çevre illerdeki kaba/ince inşaat taahhüt işleriniz, derin kazı/hafriyat projeleriniz veya konut satış lansman fiyatlarımız için hızlıca teklif talep edebilirsiniz.
+        </p>
+
+        <div class="space-y-6 text-sm">
+          <div class="flex items-start space-x-4">
+            <div class="text-brand-accent mt-1"><i class="fa-solid fa-location-dot text-lg"></i></div>
+            <div>
+              <h4 class="font-semibold text-white">Merkez Ofis</h4>
+              <p class="text-brand-muted text-xs mt-1">Yıldıztepe Mahallesi 184. Sk. No:1/A, Altındağ / Ankara</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="text-brand-accent mt-1"><i class="fa-solid fa-phone text-lg"></i></div>
+            <div>
+              <h4 class="font-semibold text-white">Telefon & GSM</h4>
+              <p class="text-brand-muted text-xs mt-1">0 (543) 875 18 19</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="text-brand-accent mt-1"><i class="fa-solid fa-envelope text-lg"></i></div>
+            <div>
+              <h4 class="font-semibold text-white">E-Posta Adresi</h4>
+              <p class="text-brand-muted text-xs mt-1">iletisim@serefkorkmazyapi.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Detailed Request Form -->
+      <div class="lg:col-span-7 bg-brand-card p-8 lg:p-12 rounded-sm border border-white/5 relative">
+        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-[10px] tracking-widest font-semibold uppercase text-brand-muted mb-2">Adınız Soyadınız *</label>
+              <input type="text" id="name" required class="w-full bg-brand-dark/50 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors">
+            </div>
+            <div>
+              <label for="phone" class="block text-[10px] tracking-widest font-semibold uppercase text-brand-muted mb-2">Telefon Numaranız *</label>
+              <input type="tel" id="phone" required class="w-full bg-brand-dark/50 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="email" class="block text-[10px] tracking-widest font-semibold uppercase text-brand-muted mb-2">E-Posta Adresiniz</label>
+              <input type="email" id="email" class="w-full bg-brand-dark/50 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors">
+            </div>
+            <div>
+              <label for="service_type" class="block text-[10px] tracking-widest font-semibold uppercase text-brand-muted mb-2">Hizmet Grubu *</label>
+              <select id="service_type" required class="w-full bg-brand-dark border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors">
+                <option value="" disabled selected>Lütfen seçiniz...</option>
+                <option value="hafriyat">Hafriyat & Kazı İşleri</option>
+                <option value="kaba_insaat">Kaba İnşaat & Betonarme</option>
+                <option value="taahhut">İnşaat Taahhüt / Müteahhitlik</option>
+                <option value="konut_satis">Konut Satış Lansman Talebi</option>
+                <option value="diger">Diğer / Genel Soru</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-[10px] tracking-widest font-semibold uppercase text-brand-muted mb-2">Proje Detayları / Mesajınız *</label>
+            <textarea id="message" rows="4" required placeholder="Talep ettiğiniz hizmete dair metraj, konum veya detay bilgileri giriniz..." class="w-full bg-brand-dark/50 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-accent transition-colors resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 bg-brand-accent text-brand-dark font-bold text-xs tracking-[0.25em] rounded-sm hover:bg-white transition-all duration-300 shadow-xl">
+            PROJE TEKLİFİ İSTEYİN
+          </button>
+        </form>
+
+        <!-- Dynamic Success Toast Overlay -->
+        <div id="form-success-toast" class="absolute inset-0 bg-[#16161a] rounded-sm z-10 flex flex-col items-center justify-center p-8 hidden opacity-0 transition-opacity duration-500">
+          <div class="w-16 h-16 bg-brand-accent/10 border border-brand-accent rounded-full flex items-center justify-center text-brand-accent text-2xl mb-6">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <h3 class="font-display font-semibold text-2xl text-white text-center mb-2">Teklif Talebiniz Alındı!</h3>
+          <p class="text-xs text-brand-muted text-center max-w-sm mb-6">Proje mühendislerimiz ve müşteri temsilcimiz paylaştığınız detayları inceleyip en geç 24 saat içerisinde teklifle dönüş sağlayacaktır.</p>
+          <button onclick="resetContactForm()" class="px-6 py-2 border border-brand-accent text-brand-accent text-xs tracking-wider rounded-sm hover:bg-brand-accent hover:text-brand-dark transition-all duration-300">Yeni Form Gönder</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-dark border-t border-white/5 py-12 px-6 lg:px-16 text-xs text-brand-muted">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <!-- Logo Combo in Footer -->
+      <div class="flex items-center space-x-3">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" class="w-8 h-8 opacity-90" fill="none" stroke="#ae8457" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 35,22 L 35,70 C 35,78 29,80 21,82 L 31,85" />
+          <path d="M 45,27 L 45,88" />
+          <path d="M 55,32 L 55,94" />
+          <path d="M 55,56 L 85,26" />
+          <path d="M 65,61 L 95,31" />
+          <path d="M 75,66 L 105,36" />
+          <path d="M 55,66 L 85,96" />
+          <path d="M 65,61 L 95,91" />
+          <path d="M 75,56 L 105,86" />
+        </svg>
+        <div class="flex flex-col text-left">
+          <span class="font-display font-extrabold text-sm tracking-[0.12em] text-white leading-none">KORKMAZ</span>
+          <span class="font-sans text-[8px] tracking-[0.38em] text-brand-accent mt-0.5 uppercase">YAPI</span>
+        </div>
+      </div>
+
+      <!-- Quick Nav -->
+      <div class="flex flex-wrap justify-center gap-6 tracking-wider">
+        <a href="#about" class="hover:text-brand-accent transition-colors">KURUMSAL</a>
+        <a href="#projects" class="hover:text-brand-accent transition-colors">PROJELERİMİZ</a>
+        <a href="#team" class="hover:text-brand-accent transition-colors">YÖNETİM EKİBİMİZ</a>
+        <a href="#contact" class="hover:text-brand-accent transition-colors">İLETİŞİM</a>
+      </div>
+
+      <!-- Copyright Statement -->
+      <div class="text-center md:text-right font-light">
+        <p>&copy; 2026 Korkmaz Yapı. Tüm Hakları Saklıdır.</p>
+        <p class="text-[10px] mt-1 text-white/30">İnşaat, Taahhüt ve Mühendislik Hizmetleri.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactivity Scripts -->
+  <script>
+    // Header background change on scroll
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.remove('bg-transparent', 'py-6');
+        header.classList.add('bg-brand-dark/95', 'py-4', 'backdrop-blur-md', 'border-b', 'border-white/5');
+      } else {
+        header.classList.remove('bg-brand-dark/95', 'py-4', 'backdrop-blur-md', 'border-b', 'border-white/5');
+        header.classList.add('bg-transparent', 'py-6');
+      }
+    });
+
+    // Mobile Navigation Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileDrawer.classList.remove('translate-x-full');
+    });
+
+    const closeDrawer = () => {
+      mobileDrawer.classList.add('translate-x-full');
+    };
+
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+    mobileNavLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+    // Construction Project Data (With Local Video File Paths & Years)
+    const projectsData = {
+      cemre_park: {
+        title: "Cemre Park Konutları",
+        category: "TAMAMLANAN KONUT SİTESİ",
+        location: "Altındağ / Ankara",
+        status: "2011 Yılında Tamamlandı",
+        video: "0714.mp4",
+        description: "2011 yılında Ankara'da teslimini gerçekleştirdiğimiz Cemre Park Konutları, modern tasarımı, geniş yeşil peyzajı ve sağlam altyapısıyla bölgenin öncü ve en çok tercih edilen konut sitelerindendir.",
+        details: [
+          { key: "Yapı Tipi", value: "Rezidans / Konut" },
+          { key: "Yapı Standartları", value: "Radye Temel & Deprem Yönetmeliği Uyumlu" },
+          { key: "Beton Sınıfı", value: "C30 Dayanımlı Beton" },
+          { key: "Yapım Yılı", value: "2011" },
+          { key: "İş Kapsamı", value: "Anahtar Teslim Taahhüt" }
+        ]
+      },
+      vestra_doga: {
+        title: "Vestra Doğa Blokları",
+        category: "TAMAMLANAN PRESTİJLİ REZİDANS",
+        location: "Çankaya / Ankara",
+        status: "2012 Yılında Tamamlandı",
+        video: "Vestra Konutları.mp4",
+        description: "2012 yılında doğayla iç içe bir yaşam konseptiyle hayata geçirdiğimiz Vestra Doğa Blokları, geniş peyzaj alanları ve deprem yönetmeliğine tam uyumlu radye temel mühendisliği ile inşa edilmiştir.",
+        details: [
+          { key: "Yapı Tipi", value: "Lüks Rezidans / Konut" },
+          { key: "Beton Sınıfı", value: "C35 Sınıfı Beton" },
+          { key: "Temel Sistemi", value: "Radye Temel ve Su/Isı Yalıtımı" },
+          { key: "Yapım Yılı", value: "2012" },
+          { key: "Sosyal Donatılar", value: "Çevre Düzenlemesi & Yürüyüş Yolları" }
+        ]
+      },
+      haskent: {
+        title: "Haskent Sitesi",
+        category: "TAMAMLANAN SİTE PROJESİ TAAHHÜTÜ",
+        location: "Altındağ / Ankara",
+        status: "2014 Yılında Tamamlandı",
+        video: "Haskent Konutları.mp4",
+        description: "2014 yılında bitirdiğimiz Haskent Sitesi projemizde, şık resepsiyonu, C35 beton sınıfı mukavemeti ve modern peyzajıyla Korkmaz Yapı'nın kentsel yapı kalitesini en üst düzeyde sergiledik.",
+        details: [
+          { key: "Yapı Tipi", value: "Çok Bloklu Konut Sitesi" },
+          { key: "Zemin Tipi", value: "Kayalık / Zemin Etütlü Güçlendirilmiş" },
+          { key: "Beton Sınıfı", value: "C35 Sınıfı Hazır Beton" },
+          { key: "Yapım Yılı", value: "2014" },
+          { key: "Sosyal Donatılar", value: "Çocuk Parkı, Peyzaj & Yönetim Lobisi" }
+        ]
+      },
+      seyir_evleri: {
+        title: "Seyir Evleri",
+        category: "TAMAMLANAN AİLE KONAKLARI",
+        location: "Keçiören / Ankara",
+        status: "2016 Yılında Tamamlandı",
+        video: "0714.mp4",
+        description: "2016 yılında tamamlanan Seyir Evleri, şehre hakim manzarası, geniş oturum planları ve yüksek malzeme kalitesiyle aile konseptli konforlu ve güvenli bir yaşam sunmaktadır.",
+        details: [
+          { key: "Yapı Tipi", value: "Konut Blokları" },
+          { key: "Yapı Standartları", value: "Deprem Yönetmeliğine %100 Uyumlu" },
+          { key: "Beton Sınıfı", value: "C35 Dayanımlı Beton" },
+          { key: "Yapım Yılı", value: "2016" },
+          { key: "Özellikler", value: "Geniş Balkonlar & Otopark Altyapısı" }
+        ]
+      },
+      mirakonut: {
+        title: "Mira Konutları",
+        category: "TAMAMLANAN KONUT & TAAHHÜT",
+        location: "Yıldıztepe Mh. / Altındağ / Ankara",
+        status: "2018 Yılında Tamamlandı",
+        video: "Mira Konutları.mp4",
+        description: "Mira Konutları, modern mühendislik standartlarıyla inşa ettiğimiz prestijli kentsel konut projelerimizdendir. Projenin hafriyat, derin zemin kazısı, betonarme kaba inşaatı ve lüks iç dekorasyon işleri tümüyle firmamız tarafından taahhüt edilerek vaktinde tamamlanmıştır.",
+        details: [
+          { key: "Yapı Tipi", value: "Rezidans / Konut" },
+          { key: "Yapı Standartları", value: "Radye Temel & Deprem Yönetmeliği Uyumlu" },
+          { key: "Beton Sınıfı", value: "C35 Dayanımlı Beton" },
+          { key: "Yapım Yılı", value: "2018" },
+          { key: "İş Kapsamı", value: "Hafriyat, Betonarme, İnce İşler Taahhüdü" }
+        ]
+      },
+      cadde_tower: {
+        title: "Cadde Tower",
+        category: "TAMAMLANAN İŞ & YAŞAM MERKEZİ",
+        location: "Keçiören / Ankara",
+        status: "2020 Yılında Tamamlandı",
+        video: "cadde tover.mp4",
+        description: "Cadde Tower, şehrin iş ve sosyal yaşamını bir araya getiren prestijli bir kule projesidir. Geniş yeşil peyzajı, yüksek kat konforu ve kentsel dönüşüm vizyonuyla yükselen projeyi 2020 yılında teslim ettik.",
+        details: [
+          { key: "Yapı Tipi", value: "Ticari + Konut Kule" },
+          { key: "Kalıp Sistemi", value: "Çelik Endüstriyel Panel Kalıp" },
+          { key: "Beton Sınıfı", value: "C35 Güçlendirilmiş Beton" },
+          { key: "Yapım Yılı", value: "2020" },
+          { key: "Hizmetler", value: "Hafriyat, Betonarme ve Cephe Taahhüdü" }
+        ]
+      },
+      vestra_aktepe: {
+        title: "Vestra Aktepe",
+        category: "TAMAMLANAN YAPI MÜHENDİSLİĞİ",
+        location: "Aktepe / Keçiören / Ankara",
+        status: "2023 Yılında Tamamlandı",
+        video: "Vestra Konutları.mp4",
+        description: "2023 yılında tamamlanan, eğimli ve zorlu arazi şartlarında fore kazık zemin güçlendirme yöntemleri ve C40 beton dayanımıyla yükselttiğimiz, üst düzey deprem güvenliğine sahip modern rezidans projemiz.",
+        details: [
+          { key: "Zemin Güçlendirme", value: "Fore Kazık & İstinat Betonarme Sistemleri" },
+          { key: "Daire Kapasitesi", value: "112 Bağımsız Bölüm" },
+          { key: "Yapım Yılı", value: "2023" },
+          { key: "Beton Sınıfı", value: "C40 Yüksek Mukavemetli Beton" },
+          { key: "Altyapı", value: "Kapalı Otopark & Jeneratör Odaları" }
+        ]
+      }
+    };
+
+    // Project Filtering Engine
+    function filterProjects(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-brand-accent', 'text-brand-dark');
+        btn.classList.add('text-brand-muted', 'hover:text-white');
+      });
+
+      const clickedBtn = document.getElementById(`filter-${category}`);
+      clickedBtn.classList.remove('text-brand-muted', 'hover:text-white');
+      clickedBtn.classList.add('bg-brand-accent', 'text-brand-dark');
+
+      const cards = document.querySelectorAll('.project-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.classList.remove('hidden');
+            visibleCount++;
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            }, 50);
+          } else {
+            card.classList.add('hidden');
+          }
+        }, 300);
+      });
+
+      // Show/Hide Empty State Informational Banner
+      const emptyState = document.getElementById('project-empty-state');
+      setTimeout(() => {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+          emptyState.style.opacity = '0';
+          setTimeout(() => { emptyState.style.opacity = '1'; }, 50);
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }, 350);
+    }
+
+    // Modal Control System (With Compact Aspect-Square Video Playback)
+    const modal = document.getElementById('project-modal');
+    const modalContent = document.getElementById('modal-content');
+
+    function openProjectModal(projectId) {
+      const proj = projectsData[projectId];
+      if (!proj) return;
+
+      modalContent.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Left Side: Square Video Player -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-start">
+            <div class="relative rounded-sm overflow-hidden aspect-square w-full max-w-[340px] bg-black shadow-2xl border border-white/10">
+              <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                <source src="${proj.video}" type="video/mp4">
+                Tarayıcınız video oynatmayı desteklemiyor.
+              </video>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+              <!-- Video Indicator -->
+              <div class="absolute bottom-3 left-3 flex items-center space-x-2 bg-black/75 px-2.5 py-1 rounded-full border border-white/10">
+                <span class="w-1.5 h-1.5 bg-brand-accent rounded-full animate-ping"></span>
+                <span class="text-[8px] tracking-widest font-bold text-white uppercase">PROJE VİDEOSU</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Side: Detailed Specs and Text -->
+          <div class="lg:col-span-7 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] tracking-[0.3em] text-brand-accent font-semibold uppercase mb-1.5 block">${proj.category}</span>
+              <h2 class="font-display font-semibold text-2xl lg:text-3xl text-white mb-2">${proj.title}</h2>
+              <p class="text-xs text-brand-muted flex items-center mb-4"><i class="fa-solid fa-location-dot mr-2 text-brand-accent"></i> ${proj.location}</p>
+              
+              <div class="inline-block px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-[10px] font-semibold text-brand-accent mb-4">
+                Durum: ${proj.status}
+              </div>
+
+              <p class="text-xs lg:text-sm text-brand-muted leading-relaxed font-light mb-6">${proj.description}</p>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="border-t border-white/10 pt-4">
+              <h4 class="text-[9px] tracking-widest font-semibold uppercase text-brand-muted mb-3">TEKNİK PROJE DETAYLARI</h4>
+              <ul class="space-y-2">
+                ${proj.details.map(detail => `
+                  <li class="flex justify-between items-center text-[11px] pb-1.5 border-b border-white/5">
+                    <span class="text-brand-muted">${detail.key}</span>
+                    <span class="text-white font-medium">${detail.value}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.add('opacity-100');
+      }, 50);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      modal.classList.remove('opacity-100');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        // Stop playing modal video by clearing inner HTML
+        modalContent.innerHTML = '';
+      }, 300);
+      document.body.style.overflow = '';
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+
+    // Form Submit Handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const successToast = document.getElementById('form-success-toast');
+      successToast.classList.remove('hidden');
+      setTimeout(() => {
+        successToast.classList.add('opacity-100');
+      }, 100);
+    }
+
+    function resetContactForm() {
+      const contactForm = document.getElementById('contactForm');
+      const successToast = document.getElementById('form-success-toast');
+      contactForm.reset();
+      successToast.classList.remove('opacity-100');
+      setTimeout(() => {
+        successToast.classList.add('hidden');
+      }, 300);
+    }
+  </script>
+</body>
+</html>
